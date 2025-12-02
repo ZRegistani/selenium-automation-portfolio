@@ -1,18 +1,15 @@
-# Eclipse
-.metadata/
-.settings/
-bin/
-
-# Maven
-target/
-
-# IntelliJ
-.idea/
+# Eclipse / IDE
 *.iml
+.project
+.classpath
+.settings/
 
-# Logs
-*.log
+# Build output
+target/
+bin/
+out/
+test-output/
 
-# OS files
+# OS junk
 .DS_Store
 Thumbs.db
