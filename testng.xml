@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Automation Suite">
+    <test name="Smoke Tests">
+        <classes>
+            <class name="com.zeba.automation.tests.SmokeTest"/>
+        </classes>
+    </test>
+</suite>
