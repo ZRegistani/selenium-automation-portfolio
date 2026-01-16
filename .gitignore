@@ -1,14 +1,12 @@
-# Maven / build output
-/target/
-/test-output/
-/bin/
+# Maven / TestNG outputs
+target/
+test-output/
 
-# Eclipse / IDE
-/.settings/
-/.classpath
-/.project
+# OS / temp files
+*.tmp
+*.lock
+*.lck
 
-# OS / misc
-*.log
-.DS_Store
-Thumbs.db
+# Jansi native temp artifacts
+jansi*.dll
+**/jansi*.dll
