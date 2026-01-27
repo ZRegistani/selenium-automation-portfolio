@@ -1,35 +1,53 @@
 package tests;
 
-import base.BaseTest;                 // ✅ ADD THIS
-import base.DriverManager;
-
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.QADemoPage;
 
 public class QADemoTests extends BaseTest {
-   
+
     @Test
-    public void demoFormSubmit_shouldShowSuccessMessage() {
-        QADemoPage page = new QADemoPage(DriverManager.getDriver());
+    public void login_withValidCredentials_shouldSucceed() {
+        QADemoPage page = new QADemoPage();
+        page.openLocal();
 
-        // If you have a URL for your demo page, open it here:
-        // driver.get("file:///C:/path/to/index.html");
-        // or page.open() if you later add an open() method.
+        page.login("tomsmith", "SuperSecretPassword!");
+        Assert.assertTrue(page.isLoginSuccessVisible(), "Expected login success message.");
+    }
 
-        page.submitDemoForm("hello world");
+    @Test
+    public void login_withInvalidCredentials_shouldShowError() {
+        QADemoPage page = new QADemoPage();
+        page.openLocal();
 
-        String msg = page.getSuccessMessage();
-        Assert.assertTrue(msg != null && !msg.trim().isEmpty(),
-                "Expected a non-empty success message after submission.");
+        page.login("wrongUser", "wrongPass");
+        Assert.assertTrue(page.isLoginErrorVisible(), "Expected login error message.");
+    }
+
+    @Test
+    public void subscribe_withValidEmail_shouldSucceed() {
+        QADemoPage page = new QADemoPage();
+        page.openLocal();
+
+        page.subscribe("test@example.com");
+        Assert.assertTrue(page.isEmailSuccessVisible(), "Expected email success message.");
+    }
+
+    @Test
+    public void subscribe_withInvalidEmail_shouldShowError() {
+        QADemoPage page = new QADemoPage();
+        page.openLocal();
+
+        page.subscribe("not-an-email");
+        Assert.assertTrue(page.isEmailErrorVisible(), "Expected email error message.");
     }
 
     @Test
     public void demoHeader_shouldBeVisible() {
-    	 QADemoPage page = new QADemoPage(DriverManager.getDriver());
+        QADemoPage page = new QADemoPage();
+        page.openLocal();
 
-        String header = page.getHeaderText();
-        Assert.assertTrue(header != null && !header.trim().isEmpty(),
-                "Expected a non-empty header on the QA Demo page.");
+        Assert.assertEquals(page.getHeaderText().trim(), "QA Demo App", "Header text mismatch.");
     }
 }

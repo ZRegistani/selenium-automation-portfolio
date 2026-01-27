@@ -6,9 +6,11 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
+    protected WebDriver driver;
+
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        WebDriver driver = DriverFactory.createDriver();
+        driver = DriverFactory.createDriver();
         DriverManager.setDriver(driver);
         DriverManager.getDriver().manage().window().maximize();
     }
@@ -16,12 +18,9 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         WebDriver driver = DriverManager.getDriver();
-        try {
-            if (driver != null) {
-                driver.quit();
-            }
-        } finally {
-            DriverManager.unload();
+        if (driver != null) {
+            driver.quit();
         }
+        DriverManager.unload();
     }
 }

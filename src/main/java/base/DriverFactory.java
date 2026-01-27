@@ -1,6 +1,5 @@
 package base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,10 +7,16 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverFactory {
 
     public static WebDriver createDriver() {
-        WebDriverManager.chromedriver().setup();
+
+        // LOCAL MACHINE: use explicit ChromeDriver path
+        System.setProperty(
+                "webdriver.chrome.driver",
+                "C:\\Projects\\drivers\\chromedriver-win64\\chromedriver.exe"
+        );
 
         ChromeOptions options = new ChromeOptions();
 
+        // CI / GitHub Actions safe settings
         if (System.getenv("CI") != null) {
             options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");

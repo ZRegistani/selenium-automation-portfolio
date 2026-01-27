@@ -1,57 +1,82 @@
-// QADemoPage.java
 package pages;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import base.DriverManager;
+import utils.Waits;
+
 
 public class QADemoPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
+    private final Waits waits;
 
-    // Locators (update these IDs if your app uses different ones)
-    private By pageHeader = By.tagName("h1");
-    private By sampleInput = By.id("sampleInput");
-    private By submitButton = By.id("submitBtn");
-    private By successMessage = By.id("successMessage");
+    // Header
+    private final By header = By.tagName("h1");
 
-    public QADemoPage(WebDriver driver) {
-        this.driver = driver;
+    // Login
+    private final By usernameInput = By.id("username");
+    private final By passwordInput = By.id("password");
+    private final By loginBtn = By.id("loginBtn");
+    private final By loginSuccess = By.id("loginSuccess");
+    private final By loginError = By.id("loginError");
+
+    // Newsletter
+    private final By emailInput = By.id("email");
+    private final By subscribeBtn = By.id("subscribeBtn");
+    private final By emailSuccess = By.id("emailSuccess");
+    private final By emailError = By.id("emailError");
+
+    public QADemoPage() {
+    	
+    	this.driver = DriverManager.getDriver();
+        this.waits = new Waits(driver, 10);
     }
 
-    /**
-     * Returns the main header text of the QA Demo page.
-     */
+    /** Opens the local demo HTML page from src/test/resources/site/index.html */
+    public void openLocal() {
+        String path = System.getProperty("user.dir")
+                + "/src/test/resources/site/index.html";
+        driver.get("file:///" + path);
+        waits.visible(header); // ensures page is loaded
+    }
+
+
     public String getHeaderText() {
-        return driver.findElement(pageHeader).getText();
+        return waits.visible(header).getText();
     }
 
-    /**
-     * Enters text into the sample input field.
-     */
-    public void enterSampleText(String text) {
-        driver.findElement(sampleInput).clear();
-        driver.findElement(sampleInput).sendKeys(text);
+    public void login(String username, String password) {
+        waits.visible(usernameInput).clear();
+        waits.visible(usernameInput).sendKeys(username);
+
+        waits.visible(passwordInput).clear();
+        waits.visible(passwordInput).sendKeys(password);
+
+        waits.clickable(loginBtn).click();
     }
 
-    /**
-     * Clicks the submit button on the QA Demo page.
-     */
-    public void clickSubmit() {
-        driver.findElement(submitButton).click();
+    public boolean isLoginSuccessVisible() {
+        return waits.visible(loginSuccess).isDisplayed();
     }
 
-    /**
-     * Performs a complete demo form submission flow.
-     */
-    public void submitDemoForm(String text) {
-        enterSampleText(text);
-        clickSubmit();
+    public boolean isLoginErrorVisible() {
+        return waits.visible(loginError).isDisplayed();
     }
 
-    /**
-     * Returns the success message text after form submission.
-     */
-    public String getSuccessMessage() {
-        return driver.findElement(successMessage).getText();
+    public void subscribe(String email) {
+        waits.visible(emailInput).clear();
+        waits.visible(emailInput).sendKeys(email);
+
+        waits.clickable(subscribeBtn).click();
+    }
+
+    public boolean isEmailSuccessVisible() {
+        return waits.visible(emailSuccess).isDisplayed();
+    }
+
+    public boolean isEmailErrorVisible() {
+        return waits.visible(emailError).isDisplayed();
     }
 }
