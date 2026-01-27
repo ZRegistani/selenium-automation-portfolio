@@ -1,35 +1,31 @@
 package pages;
 
-import base.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 
-/**
- * Page object focused on Google search actions.
- */
+import utils.Waits;
+
 public class GoogleHomeSearchPage {
 
-    // Locator for the Google search input field
-    private final By searchBox = By.name("q");
+    private final WebDriver driver;
+    private final Waits waits;
 
-    public GoogleHomeSearchPage() {
-        // No driver needed in constructor when using DriverManager (ThreadLocal)
+    private final By searchBox = By.id("searchbox_input");
+
+    public GoogleHomeSearchPage(WebDriver driver) {
+        this.driver = driver;
+        this.waits = new Waits(driver, 10);
     }
 
-    public void typeSearch(String text) {
-        WebElement box = DriverManager.getDriver().findElement(searchBox);
-        box.clear();
-        box.sendKeys(text);
+    public void open() {
+        driver.get("https://duckduckgo.com/");
+        waits.visible(searchBox);
     }
 
-    public void submitSearch() {
-        DriverManager.getDriver().findElement(searchBox).sendKeys(Keys.ENTER);
-    }
+    public GoogleResultsPage searchFor(String query) {
+        waits.visible(searchBox).sendKeys(query + Keys.ENTER);
+        return new GoogleResultsPage(driver);
 
-    public GoogleResultsPage searchFor(String text) {
-        typeSearch(text);
-        submitSearch();
-        return new GoogleResultsPage(); // update this page class the same way
     }
 }
