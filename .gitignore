@@ -1,12 +1,21 @@
-# Maven / TestNG outputs
+# Maven
 target/
+
+# TestNG / Reports
 test-output/
 
-# OS / temp files
-*.tmp
-*.lock
-*.lck
+# Eclipse
+.classpath
+.project
+.settings/
 
-# Jansi native temp artifacts
-jansi*.dll
-**/jansi*.dll
+# IntelliJ
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp folder
+Temp/
