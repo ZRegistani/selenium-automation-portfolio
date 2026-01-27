@@ -1,5 +1,6 @@
 package base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,10 +8,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverFactory {
 
     public static WebDriver createDriver() {
+        WebDriverManager.chromedriver().setup();
+
         ChromeOptions options = new ChromeOptions();
 
-        // Enable headless mode in CI
-        if (isCi()) {
+        if (System.getenv("CI") != null) {
             options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
@@ -18,9 +20,5 @@ public class DriverFactory {
         }
 
         return new ChromeDriver(options);
-    }
-
-    private static boolean isCi() {
-        return System.getenv("CI") != null;
     }
 }
