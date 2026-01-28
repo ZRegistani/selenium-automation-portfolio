@@ -1,6 +1,8 @@
 package tests;
 
 import base.BaseTest;
+import base.DriverManager;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.QADemoPage;
@@ -9,7 +11,8 @@ public class QADemoTests extends BaseTest {
 
     @Test
     public void login_withValidCredentials_shouldSucceed() {
-        QADemoPage page = new QADemoPage();
+    	QADemoPage page = new QADemoPage(DriverManager.getDriver());
+
         page.openLocal();
 
         page.login("tomsmith", "SuperSecretPassword!");
@@ -18,7 +21,8 @@ public class QADemoTests extends BaseTest {
 
     @Test
     public void login_withInvalidCredentials_shouldShowError() {
-        QADemoPage page = new QADemoPage();
+    	QADemoPage page = new QADemoPage(DriverManager.getDriver());
+
         page.openLocal();
 
         page.login("wrongUser", "wrongPass");
@@ -27,7 +31,8 @@ public class QADemoTests extends BaseTest {
 
     @Test
     public void subscribe_withValidEmail_shouldSucceed() {
-        QADemoPage page = new QADemoPage();
+    	QADemoPage page = new QADemoPage(DriverManager.getDriver());
+
         page.openLocal();
 
         page.subscribe("test@example.com");
@@ -36,7 +41,8 @@ public class QADemoTests extends BaseTest {
 
     @Test
     public void subscribe_withInvalidEmail_shouldShowError() {
-        QADemoPage page = new QADemoPage();
+    	QADemoPage page = new QADemoPage(DriverManager.getDriver());
+
         page.openLocal();
 
         page.subscribe("not-an-email");
@@ -45,7 +51,8 @@ public class QADemoTests extends BaseTest {
 
     @Test
     public void demoHeader_shouldBeVisible() {
-        QADemoPage page = new QADemoPage();
+    	QADemoPage page = new QADemoPage(DriverManager.getDriver());
+
         page.openLocal();
 
         Assert.assertEquals(page.getHeaderText().trim(), "QA Demo App", "Header text mismatch.");

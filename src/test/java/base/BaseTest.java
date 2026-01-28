@@ -6,13 +6,10 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    protected WebDriver driver;
-
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        driver = DriverFactory.createDriver();
+        WebDriver driver = DriverFactory.createDriver();
         DriverManager.setDriver(driver);
-        DriverManager.getDriver().manage().window().maximize();
     }
 
     @AfterMethod(alwaysRun = true)

@@ -28,9 +28,8 @@ public class QADemoPage {
     private final By emailSuccess = By.id("emailSuccess");
     private final By emailError = By.id("emailError");
 
-    public QADemoPage() {
-    	
-    	this.driver = DriverManager.getDriver();
+    public QADemoPage(WebDriver driver) {
+        this.driver = driver;
         this.waits = new Waits(driver, 10);
     }
 

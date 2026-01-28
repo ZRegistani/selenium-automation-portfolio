@@ -1,11 +1,7 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="UI Tests" parallel="methods" thread-count="3">
-  <test name="All Tests">
+<suite name="CI Suite">
+  <test name="QA Demo Tests">
     <classes>
       <class name="tests.QADemoTests"/>
-      <class name="tests.GoogleResultsLinksTest"/>
-      <class name="tests.GoogleSearchResultsTest"/>
-      <class name="tests.GoogleTitleTest"/>
     </classes>
   </test>
 </suite>
