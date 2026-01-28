@@ -1,13 +1,14 @@
-# Selenium Testing Framework (Java + TestNG + Maven)
+# Selenium Automation Framework (Java + TestNG + Maven)
 
-A clean Selenium UI automation framework built with Java, Maven, and TestNG, following the Page Object Model (POM).
+A clean Selenium UI automation framework built with Java, Maven, and TestNG,
+following the Page Object Model (POM) design pattern.
 
-Designed for readability, stability, and scalability — similar to real-world SDET team frameworks.
+Designed for readability, stability, and scalability — similar to real-world
+SDET team frameworks.
 
 ---
 
 ## Tech Stack
-
 - Java 17
 - Selenium WebDriver
 - TestNG
@@ -16,20 +17,18 @@ Designed for readability, stability, and scalability — similar to real-world S
 ---
 
 ## Key Framework Features
-
-- **Page Object Model (POM):**  
+- **Page Object Model (POM)**  
   UI locators and actions live in `src/main/java/pages`
 
-- **Explicit Waits Utility:**  
+- **Explicit Waits Utility**  
   `utils/Waits` wraps `WebDriverWait` for stable tests (no hard sleeps)
 
-- **Driver Lifecycle Management:**  
-  Setup and teardown handled in `src/test/java/base/BaseTest`
+- **Driver Lifecycle Management**  
+  Setup/teardown handled in `src/test/java/base/BaseTest`
 
-- **Clean Maven Structure:**  
+- **Clean Maven Structure**  
   Clear separation between framework code and test code
 
 ---
 
 ## Project Structure
-
