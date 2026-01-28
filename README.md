@@ -36,3 +36,13 @@ Designed for readability, stability, and scalability—similar to real-world SDE
 ### Run all tests
 ```bash
 mvn clean test
+## CI / GitHub Actions
+
+This project includes a GitHub Actions workflow that automatically runs the UI test suite on every push and pull request to `main`.
+
+- Uses Java 17 (Temurin)
+- Runs Maven tests with TestNG
+- Executes in a headless Linux environment
+
+Workflow file:
+.github/workflows/ui-tests.yml
