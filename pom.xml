@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -11,21 +10,18 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <!-- Java -->
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <!-- Versions -->
     <selenium.version>4.21.0</selenium.version>
     <testng.version>7.10.2</testng.version>
-    <webdrivermanager.version>5.7.0</webdrivermanager.version>
+    <webdrivermanager.version>5.6.3</webdrivermanager.version>
     <surefire.version>3.2.5</surefire.version>
   </properties>
 
   <dependencies>
-
-    <!-- Selenium (MAIN scope - required for src/main/java) -->
+    <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -46,24 +42,10 @@
       <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
     <plugins>
-
-      <!-- Maven Compiler Plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-        <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-
-      <!-- Surefire Plugin (TestNG) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -72,15 +54,8 @@
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
-
-          <!-- Optional: parallel execution -->
-          <parallel>methods</parallel>
-          <threadCount>3</threadCount>
-          <useUnlimitedThreads>false</useUnlimitedThreads>
-          <failIfNoTests>true</failIfNoTests>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 
