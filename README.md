@@ -1,8 +1,13 @@
 # Selenium Testing Framework (Java + TestNG + Maven)
 
+<<<<<<< HEAD
 A clean Selenium UI automation framework built with Java, Maven, and TestNG,
 following the Page Object Model (POM). Designed for readability, stability,
 and scalability.
+=======
+A clean Selenium UI automation framework built with Java, Maven, and TestNG, following the Page Object Model (POM).  
+Designed for readability, stability, and scalability.
+>>>>>>> 7388c79 (chore: trigger CI run)
 
 ## Tech Stack
 - Java 17
@@ -11,6 +16,7 @@ and scalability.
 - Maven
 
 ## Project Structure
+<<<<<<< HEAD
 - src/main/java/pages → Page Objects (Google/DuckDuckGo pages + QA Demo page)
 - src/main/java/utils → Utilities (Waits)
 - src/test/java/base → Base test + driver helpers
