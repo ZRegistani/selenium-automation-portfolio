@@ -21,6 +21,32 @@
   </properties>
 
   <dependencies>
+  
+  	<!-- Accessibility testing (axe-core) -->
+	<dependency>
+	  <groupId>com.deque.html.axe-core</groupId>
+	  <artifactId>selenium</artifactId>
+	  <version>4.10.0</version>
+	  <scope>test</scope>
+	</dependency>
+	
+	<!-- JSON utilities for reporting -->
+	<dependency>
+	  <groupId>org.json</groupId>
+	  <artifactId>json</artifactId>
+	  <version>20240303</version>
+	  <scope>test</scope>
+	</dependency>
+
+  
+  	<!-- API testing -->
+	<dependency>
+	  <groupId>io.rest-assured</groupId>
+	  <artifactId>rest-assured</artifactId>
+	  <version>5.5.0</version>
+	  <scope>test</scope>
+	</dependency>
+
     <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
