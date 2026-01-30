@@ -15,7 +15,7 @@ public class HomePage {
     private By usernameInput = By.id("username");
     private By passwordInput = By.id("password");
     private By loginButton   = By.id("loginBtn");
-    private By errorMessage  = By.id("errorMessage");
+    private By loginError    = By.id("loginError");
 
     // ===== Constructor =====
     public HomePage(WebDriver driver) {
@@ -47,11 +47,11 @@ public class HomePage {
     }
 
     // ===== Validations =====
-    public boolean isErrorMessageDisplayed() {
-        return driver.findElement(errorMessage).isDisplayed();
+    public boolean isLoginErrorDisplayed() {
+        return driver.findElement(loginError).isDisplayed();
     }
 
-    public String getErrorMessageText() {
-        return driver.findElement(errorMessage).getText();
+    public String getLoginErrorText() {
+        return driver.findElement(loginError).getText();
     }
 }

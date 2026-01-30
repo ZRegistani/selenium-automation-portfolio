@@ -4,50 +4,58 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * DashboardPage represents the page shown after successful login.
+ * DashboardPage represents the area shown after successful login.
+ * In your local index.html, this is indicated by #loginSuccess being shown.
  */
 public class DashboardPage {
 
     private WebDriver driver;
 
-    // ===== Locators =====
-    private By headerTitle = By.id("header");
-    private By logoutButton = By.id("logoutBtn");
-    private By newsletterInput = By.id("newsletterEmail");
-    private By subscribeButton = By.id("subscribeBtn");
-    private By successMessage = By.id("successMessage");
+    // ===== Locators (based on index.html) =====
+    private By loginSuccessMessage = By.id("loginSuccess");
+
+    private By newsletterEmailInput = By.id("email");
+    private By subscribeButton      = By.id("subscribeBtn");
+    private By emailSuccessMessage  = By.id("emailSuccess");
+    private By emailErrorMessage    = By.id("emailError");
 
     // ===== Constructor =====
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // ===== Validations =====
-    public boolean isHeaderDisplayed() {
-        return driver.findElement(headerTitle).isDisplayed();
+    // ===== Login Success (acts like "dashboard loaded") =====
+    public boolean isLoginSuccessDisplayed() {
+        return driver.findElement(loginSuccessMessage).isDisplayed();
     }
 
-    public String getHeaderText() {
-        return driver.findElement(headerTitle).getText();
+    public String getLoginSuccessText() {
+        return driver.findElement(loginSuccessMessage).getText();
     }
 
-    // ===== Newsletter Actions =====
+    // ===== Newsletter =====
     public void enterNewsletterEmail(String email) {
-        driver.findElement(newsletterInput).clear();
-        driver.findElement(newsletterInput).sendKeys(email);
+        driver.findElement(newsletterEmailInput).clear();
+        driver.findElement(newsletterEmailInput).sendKeys(email);
     }
 
     public void clickSubscribe() {
         driver.findElement(subscribeButton).click();
     }
 
-    public String getSuccessMessage() {
-        return driver.findElement(successMessage).getText();
+    public boolean isEmailSuccessDisplayed() {
+        return driver.findElement(emailSuccessMessage).isDisplayed();
     }
 
-    // ===== Logout =====
-    public void logout() {
-        driver.findElement(logoutButton).click();
+    public String getEmailSuccessText() {
+        return driver.findElement(emailSuccessMessage).getText();
+    }
+
+    public boolean isEmailErrorDisplayed() {
+        return driver.findElement(emailErrorMessage).isDisplayed();
+    }
+
+    public String getEmailErrorText() {
+        return driver.findElement(emailErrorMessage).getText();
     }
 }
-
