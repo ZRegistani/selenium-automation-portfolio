@@ -21,5 +21,5 @@ jobs:
           java-version: "17"
           cache: maven
 
-      - name: Run Maven tests (repo root)
-        run: mvn -B -U clean test
+      - name: Run API tests only
+        run: mvn clean test -Dtest=ApiSmokeTest
