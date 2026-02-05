@@ -34,6 +34,11 @@ Designed for readability, stability, and scalability.
   - Validates login success/error messaging
   - Validates newsletter subscription success/error messaging
   - Validates header visibility on page load
+ 
+## BDD (Cucumber)
+Implemented Cucumber (Gherkin) with TestNG to enable business-readable scenarios, 
+reusable step definitions, centralized hooks, and HTML reporting for smoke and negative test coverage.
+
 
 ## How to Run
 ```bash
