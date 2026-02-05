@@ -36,8 +36,9 @@ Designed for readability, stability, and scalability.
   - Validates header visibility on page load
  
 ## BDD (Cucumber)
-Implemented Cucumber (Gherkin) with TestNG to enable business-readable scenarios, 
-reusable step definitions, centralized hooks, and HTML reporting for smoke and negative test coverage.
+Implemented a BDD layer using Cucumber (Gherkin) with TestNG, enabling business-readable scenarios, 
+reusable step definitions, centralized hooks, tag-based execution, and HTML reporting for smoke and negative test coverage.
+
 
 
 ## How to Run
