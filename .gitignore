@@ -19,3 +19,8 @@ Thumbs.db
 
 # Temp folder
 Temp/
+
+/target/
+/.settings/
+/test-output/
+/Temp/
