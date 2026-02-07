@@ -1,7 +1,7 @@
 # Maven
 target/
 
-# TestNG / Reports
+# Test reports
 test-output/
 
 # Eclipse
@@ -17,9 +17,5 @@ test-output/
 .DS_Store
 Thumbs.db
 
-# Temp folder
+# Temp
 Temp/
-/target/
-/.settings/
-/test-output/
-/Temp/
