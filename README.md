@@ -4,7 +4,7 @@
 A clean Selenium UI automation framework built with Java, Maven, and TestNG,
 following the Page Object Model (POM). Designed for readability, stability,
 and scalability.
-=======
+
 A clean Selenium UI automation framework built with Java, Maven, and TestNG, following the Page Object Model (POM).  
 Designed for readability, stability, and scalability.
 
